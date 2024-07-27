@@ -15,3 +15,5 @@ faiss-cpu
 Library 
 configurati
 faiss-cpu
+requests 
+beautifulsoup4
