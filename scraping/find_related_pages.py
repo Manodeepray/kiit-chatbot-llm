@@ -42,7 +42,7 @@ if __name__ == "__main__":
     main_url = input("enter the main home page url : ")  #"https://example.com"  # Replace with the main home page URL
     file_name = input("enter the main home page name : ")
     file_name = file_name + ".csv"
-    csv_file_path = os.path.join("kiit-chatbot-llm","src","csv",file_name)
+    csv_file_path = os.path.join("src\csv",file_name)
     related_pages = get_all_links(main_url)
     print(f"Related pages found: {len(related_pages)}")
     for page in related_pages:

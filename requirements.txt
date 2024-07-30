@@ -17,3 +17,4 @@ configurati
 faiss-cpu
 requests 
 beautifulsoup4
+PyMuPDF

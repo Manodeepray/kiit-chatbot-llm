@@ -1,0 +1,333 @@
+
+
+Faculty
+
+    Abhik Gorai
+    Email:abhik.goraifet@kiit.ac.in
+
+    Abu Nasar Ghazali
+    Email:abu.ghazalifet@kiit.ac.in
+
+    Akshaya Kumar Pati
+    Email:akshaya.patifet@kiit.ac.in
+
+    Amit Bakshi
+    Email:amitfet@kiit.ac.in
+
+    Amitkumar V. Jha
+    Email:amit.jhafet@kiit.ac.in
+
+    Amlan Datta
+    Email:amlanfet@kiit.ac.in
+
+    Amrit Mukherjee
+    Email:
+
+    Ankit Kudeshia
+    Email:
+
+    Ansuman Patnaik
+    Email:ansumanfet@kiit.ac.in
+
+    Anupam Samui
+    Email:asamuifet@kiit.ac.in
+
+    Anupama Senapati
+    Email:anupamafet@kiit.ac.in
+
+    Arighna Deb
+    Email:airghna.debfet@kiit.ac.in
+
+    Arindam Basak
+    Email:abasakfet@kiit.ac.in
+
+    Arun Kumar Ray
+    Email:akrayfet@kiit.ac.in
+
+    Aryadhara Pradhan
+    Email:
+
+    Asish Kumar Sen
+    Email:ak_sen@kiit.ac.in
+
+    Ayaskanta Mishra
+    Email:ayaskanta.mishrafet@kiit.ac.in
+
+    B Shivalal Patro
+    Email:bspatrofet@kiit.ac.in
+
+    Bhargav Appasani
+    Email:bhargav.appasanifet@kiit.ac.in
+
+    Bikash Kumar Behera
+    Email:bikash.beherafet@kiit.ac.in
+
+    Bishnu Prasad De
+    Email:bishnu.defet@kiit.ac.in
+
+    Budhadeb Maity
+    Email:bmaityfet@kiit.ac.in
+
+    Debolina Deb
+    Email:
+
+    Deep Mukherjee
+    Email:deepmukherjeefet@kiit.ac.in
+
+    Deepak Kumar Rout
+    Email:deepak.routfet@kiit.ac.in
+
+    Mano Ranjan Kumar
+    Email:mano.kumarfet@kiit.ac.in
+
+    S. K. Mohapatra
+    Email:sushanta.mohapatrafet@kiit.ac.in
+
+    Ganaraj P S
+    Email:ganaraj.psfet@kiit.ac.in
+
+    Israj Ali
+    Email:israjfet@kiit.ac.in
+
+    Jabir Hussain
+    Email:jabir.hussainfet@kiit.ac.in
+
+    Jibendu Sekhar Roy
+    Email:drjsroy@kiit.ac.in
+
+    Jitendra Kumar Das
+    Email:jkdasfet@kiit.ac.in
+
+    Joy Choudhary
+    Email:
+
+    Jyoti Ranjan Panda
+    Email:jyotiranjan.pandafet@kiit.ac.in
+
+    Kananbala Ray
+    Email:kbrayfet@kiit.ac.in
+
+    Kumar Biswal
+    Email:kumar.biswalfet@kiit.ac.in
+
+    Lizina Khatua
+    Email:lkhatuafet@kiit.ac.in
+
+    Makireddi Ramana
+    Email:ramanafet@kiit.ac.in
+
+    Mamata Panigrahy
+    Email:mamta.panigrahyfet@kiit.ac.in
+
+    Manisha Sahoo
+    Email:
+
+    Manjusha Behera
+    Email:mbeherafet@kiit.ac.in
+
+    Manoj Kumar Beuria
+    Email:manoj.beuriafet@kiit.ac.in
+
+    Manoj Kumar Parida
+    Email:manoj.paridafet@kiit.ac.in
+
+    Mayank Mishra
+    Email:mayank.mishra@kiit.ac.in
+
+    Nageswara Rao Budipi
+    Email:nageswarfet@kiit.ac.in
+
+    Nirmal K. Rout
+    Email:nkrout@kiit.ac.in
+
+    Niten Kumar Panda
+    Email:
+
+    Om Prakash Acharya
+    Email:omprakash.acharyafet@kiit.ac.in
+
+    P.Sunil
+    Email:pattepu.sunilfet@kiit.ac.in
+
+    Parveen Malik
+    Email:parveen.malikfet@kiit.ac.in
+
+    Pradipta Dutta
+    Email:pduttafet@kiit.ac.in
+
+    Prasanta Kumar Patra
+    Email:ppatrafet@kiit.ac.in
+
+    Pravat Biswal
+    Email:pravat.biswalfet@kiit.ac.in
+
+    Pravin Kumar Samanta
+    Email:pravin.samantafet@kiit.ac.in
+
+    Princy Sharma
+    Email:
+
+    Priya Das
+    Email:priya.dasfet@kiit.ac.in
+
+    Rahul Yadav
+    Email:
+
+    Rajendra Prasad
+    Email:rprasadfet@kiit.ac.in
+
+    Rasmita Lenka
+    Email:rasmitafet@kiit.ac.in
+
+    Ravada S. Kumar
+    Email:
+
+    Rishi Kumar Khanna
+    Email:rishi.khannafet@kiit.ac.in
+
+    Ruby Mishra
+    Email:
+
+    Sambit Prasad Kar
+    Email:spkarfet@kiit.ac.in
+
+    Sananda Kumar
+    Email:sananda.kumarfet@kiit.ac.in
+
+    Sandeep Kumar Dash
+    Email:sandeepfet@kiit.ac.in
+
+    Sanhita Mishra
+    Email:
+
+    Sarita Nanda
+    Email:snandafet@kiit.ac.in
+
+    Sarita Samal
+    Email:
+
+    Sasmita Pahadsingh
+    Email:spahadsinghfet@kiit.ac.in
+
+    Satish Kumar Gannamaneni
+    Email:gskfet@kiit.ac.in
+
+    Satya Narayan Mishra
+    Email:snmishrafet@kiit.ac.in
+
+    Shivam Gautam
+    Email:
+
+    Shruti
+    Email:shruti.fet@kiit.ac.in
+
+    Shweta Alpna
+    Email:salpnafet@kiit.ac.in
+
+    Snehalika
+    Email:
+
+    Soubhagya R. Prusty
+    Email:
+
+    Sraddhanjali Mohapatra
+    Email:smohapatrafet@kiit.ac.in
+
+    Sreyashi Roy
+    Email:sreyashi.royfet@kiit.ac.in
+
+    Srikanta Mohapatra
+    Email:
+
+    Srinibasa Padhy
+    Email:srinibas.padhyfet@kiit.ac.in
+
+    Srinivas Ramavath
+    Email:srinivas.ramvathfet@kiit.ac.in
+
+    Sruti S. Singh
+    Email:srutisinghfet@kiit.ac.in
+
+    Subhashree Mishra
+    Email:subhasree.mishrafet@kiit.ac.in
+
+    Subhrakanta Behera
+    Email:skbeherafet@kiit.ac.in
+
+    Subir Kumar Maity
+    Email:skmaityfet@kiit.ac.in
+
+    Suchimita Roy
+    Email:
+
+    Sudhakar Sahu
+    Email:ssahufet@kiit.ac.in
+
+    Sudhansu Sekhar Singh
+    Email:ssinghfet@kiit.ac.in
+
+    Sukanta Kumar Sabut
+    Email:sukanta.sabatfet@kiit.ac.in
+
+    Suman Roy
+    Email:suman.royfet@kiit.ac.in
+
+    Sumit Dass
+    Email:sumit.dassfet@kiit.ac.in
+
+    Sunil Kumar Mishra
+    Email:sunil.mishrafet@kiit.ac.in
+
+    Suprava Patnaik
+    Email:suprava.patnaikfet@kiit.ac.in
+
+    Susanta Kumar Badi
+    Email:skbadifet@kiit.ac.in
+
+    Suvashish Kund
+    Email:suvashish.kundfet@kiit.ac.in
+
+    Swati Swayamsiddha
+    Email:swayamsiddhafet@kiit.ac.in
+
+    Swetaleena Sahoo
+    Email:swetaleenafet@kiit.ac.in
+
+    Tapaswini Samant
+    Email:tsamantfet@kiit.ac.in
+
+    Tejaswini Kar
+    Email:tkarfet@kiit.ac.in
+
+    Tirtha Majumder
+    Email:
+
+    Trupti Mayee Behera
+    Email:truptifet@kiit.ac.in
+
+    Tushar Singh
+    Email:
+
+    Udai P Singh
+    Email:singhup@kiit.ac.in
+
+    Ujjwol Barman
+    Email:ujjwol.barmanfet@kiit.ac.in
+
+    Umesh Chandra Samal
+    Email:umesh.samalfet@kiit.ac.in
+
+    V.V.Subrahmanya Kumar Bhajana
+    Email:bvvs.kumarfet@kiit.ac.in
+
+    Vikas Kumar Jha
+    Email:vikas.jhafet@kiit.ac.in
+
+    Vimal K. Shrivastava
+    Email:vimal.shrivastavafet@kiit.ac.in
+
+    Vinod Jha
+    Email:vjhafet@kiit.ac.in
+
+    Wriddhi Bhowmik
+    Email:wriddhi.bhowmikfet@kiit.ac.in
