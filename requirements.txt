@@ -6,6 +6,9 @@ pandas
 langchain_community
 pypdf
 langchain_chroma 
+
+
+
 langchain_openai
 transformers 
 sentence-transformers
@@ -18,3 +21,6 @@ faiss-cpu
 requests 
 beautifulsoup4
 PyMuPDF
+jq
+tf-keras
+langchain-huggingface
