@@ -1,14 +1,12 @@
 import os
 
 
-
-
 def find_files(path):
     txt_files = []
     csv_files = []
     pdf_files = []
     input_files = []
-    for root , dirs , files in  os.walk("src/data"):
+    for root , dirs , files in  os.walk(path):
         
         for file in files:
             input_file = os.path.join(root, file)
@@ -25,14 +23,9 @@ def find_files(path):
     print()
 
 
-    return txt_files,csv_files,pdf_files   
+    return txt_files,csv_files,pdf_files    
 
 find_files(path ="src\data")
-'''input_files = []
-for root , dirs , files in  os.walk("src/data"):
+
+
     
-    for file in files:
-        input_file = os.path.join(root, file)
-        input_files.append(input_file)
-        print(input_file)
-'''

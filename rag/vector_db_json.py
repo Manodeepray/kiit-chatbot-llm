@@ -1,22 +1,13 @@
 from langchain_community.document_loaders import JSONLoader
-from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-
+from embedding import *
 
 def return_db_chroma(filepath):
     
-    embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    embedding_function =sebtence_transformer_embedding()
 
-    model_name = "sentence-transformers/all-mpnet-base-v2"
-    model_kwargs = {'device': 'cpu'}
-    encode_kwargs = {'normalize_embeddings': False}
-    hf = HuggingFaceEmbeddings(
-        model_name=model_name,
-        model_kwargs=model_kwargs,
-        encode_kwargs=encode_kwargs
-    )
+    hf = hugging_face_embeddding()
 
     loader = JSONLoader(file_path=filepath, jq_schema=  "data", text_content=False)
     documents = loader.load()
@@ -30,16 +21,9 @@ def return_db_chroma(filepath):
 
 def return_db_faiss(filepath):
     
-    embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    embedding_function =sebtence_transformer_embedding()
 
-    model_name = "sentence-transformers/all-mpnet-base-v2"
-    model_kwargs = {'device': 'cpu'}
-    encode_kwargs = {'normalize_embeddings': False}
-    hf = HuggingFaceEmbeddings(
-        model_name=model_name,
-        model_kwargs=model_kwargs,
-        encode_kwargs=encode_kwargs
-    )
+    hf = hugging_face_embeddding()
 
     loader = JSONLoader(file_path=filepath, text_content=False)
     documents = loader.load()

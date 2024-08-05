@@ -1,14 +1,19 @@
 import requests
 
 
+def llm_api_request(query_text):
+	API_URL = "https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B"
+	headers = {"Authorization": "Bearer hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
 
-API_URL = "https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B"
-headers = {"Authorization": "Bearer hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
-
-def query(payload):
-	response = requests.post(API_URL, headers=headers, json=payload)
-	return response.json()
+	def query(payload):
+		response = requests.post(API_URL, headers=headers, json=payload)
+		return response.json()
+		
+	output = query({
+		"inputs": "Can you please let us know more details about your ",
+	})
+ 
+	output = query({"inputs": query_text})
+ 
+	return output
 	
-output = query({
-	"inputs": "Can you please let us know more details about your ",
-})

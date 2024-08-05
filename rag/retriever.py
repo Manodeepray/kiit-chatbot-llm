@@ -7,7 +7,10 @@ def vector_store_retirever(vectorstore):
     retriever = vectorstore.as_retriever()
     return retriever
 
-s
+
+
+
+
 if __name__ == "__main__":
     
     query = str(input("enter ur query : "))
