@@ -31,14 +31,20 @@ def load_db_chunk_persist_txt(txt_files , embeddings):
             embedding=hf,
             persist_directory="artifacts"
         )
+        print("\n vector_txt_db loaded successfully")
+
     elif embeddings == "sentence_tf":
-        embedding_function = embedding.sebtence_transformer_embedding()
+        embedding_function = embedding.sentence_transformer_embedding()
         vectordb_txt = Chroma.from_documents(
             documents=chunked_documents,
             embedding=embedding_function,
             persist_directory="artifacts"
         )
+        print("\n vector_txt_db loaded successfully")
+
     vectordb_txt.persist()
+    print("\n vector_txt_db persisted successfully")
+
     return vectordb_txt
 
 def load_db_chunk_persist_pdf(pdf_files , embeddings):
@@ -54,19 +60,26 @@ def load_db_chunk_persist_pdf(pdf_files , embeddings):
     
     if embeddings == "hf":
         hf = embedding.hugging_face_embeddding()
+        
         vectordb_pdf = Chroma.from_documents(
             documents=chunked_documents,
             embedding=hf,
             persist_directory="artifacts"
         )
+        print("\n vector_pdf_db loaded successfully")
+
     elif embeddings == "sentence_tf":
-        embedding_function = embedding.sebtence_transformer_embedding()
+        embedding_function = embedding.sentence_transformer_embedding()
         vectordb_pdf = Chroma.from_documents(
             documents=chunked_documents,
             embedding=embedding_function,
             persist_directory="artifacts"
         )
+        print("\n vector_pdf_db loaded successfully")
+
     vectordb_pdf.persist()
+    print("\n vector_pdf_db persisted successfully")
+
     return vectordb_pdf
 
 
@@ -95,14 +108,20 @@ def load_db_persist_csv(csv_files, embeddings):
             embedding=hf,
             persist_directory="artifacts"
         )
+        print("\n vector_csv_db loaded successfully")
+
     elif embeddings == "sentence_tf":
-        embedding_function = embedding.sebtence_transformer_embedding()
+        embedding_function = embedding.sentence_transformer_embedding()
         vector_db_csv = Chroma.from_documents(
             documents=documents,
             embedding=embedding_function,
             persist_directory="artifacts"
         )
+        print("\n vector_csv_db loaded successfully")
+
     vector_db_csv.persist()
+    print("\n vector_csv_db persisted successfully")
+
     return vector_db_csv
 
 
@@ -123,7 +142,14 @@ if __name__ == "__main__":
 
     path = 'src\data'
     txt_files,csv_files,pdf_files  = lister.find_files(path)
-    embedding = "hf"
-    vector_db_pdf = load_db_chunk_persist_pdf(pdf_files,embedding)
-    vector_db_txt = load_db_chunk_persist_txt(txt_files,embedding)
-    vector_db_csv = load_db_persist_csv(csv_files,embedding)
+    print("files separated")
+    embeddings = "hf"
+    print(f"\n embedding :{embeddings} ")
+    
+    vector_db_pdf = load_db_chunk_persist_pdf(pdf_files,embeddings)
+    vector_db_txt = load_db_chunk_persist_txt(txt_files,embeddings)
+    vector_db_csv = load_db_persist_csv(csv_files,embeddings)
+    
+    
+    
+    

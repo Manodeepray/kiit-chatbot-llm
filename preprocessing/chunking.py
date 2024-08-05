@@ -15,6 +15,8 @@ def load_csv_files(csv_files):
     combined_df = pd.concat(data_frames, ignore_index=True)
     combined_df = combined_df.dropna()
     combined_df = combined_df.reset_index(drop=True)
+    print("csv combined  successfully")
+
     return combined_df
 
 
@@ -32,7 +34,8 @@ def chunking_txt(txt_files):
     
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=10)
     chunked_documents = text_splitter.split_documents(documents)
-    
+    print("txts chunked  successfully")
+
     return chunked_documents
 
 
@@ -52,7 +55,7 @@ def chunking_pdfs(pdfs_list):
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=10)
     chunked_documents = text_splitter.split_documents(documents)
     
-    
+    print("pdfs chunked  successfully")
     return chunked_documents
 
 

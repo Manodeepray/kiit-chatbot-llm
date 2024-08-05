@@ -11,10 +11,12 @@ def hugging_face_embeddding():
         model_kwargs=model_kwargs,
         encode_kwargs=encode_kwargs
     )
-    
+    print("hf embedding loaded")
     return hf
 
 
-def sebtence_transformer_embedding():
+def sentence_transformer_embedding():
      embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+     print(" sentence_transformer_embedding loaded")
+
      return embedding_function

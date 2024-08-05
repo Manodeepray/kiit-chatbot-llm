@@ -1,5 +1,5 @@
 
-from rag.vector_db_json import *
+from vector_db_json import *
 
 #vector_store retriever
 
@@ -8,7 +8,7 @@ def vector_store_retirever(vectorstore):
     return retriever
 
 
-
+    
 
 
 if __name__ == "__main__":
