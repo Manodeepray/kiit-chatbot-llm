@@ -24,16 +24,21 @@ def load_csv_files(csv_files):
 def chunking_txt(txt_files):
     
     documents = []
-    
+    all_text = ""
     for file in txt_files:
         if file.endswith('.txt'):
             txt_path = file  # Use directory_path instead of txt_list
             with open(txt_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-                documents.append(content)
+                all_text+=f.read() +"\n"
+                print(f[:100])
+                
+                """content = f.read()
+                documents.append(content)"""
     
-    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=10)
-    chunked_documents = text_splitter.split_documents(documents)
+    text_splitter = CharacterTextSplitter(separator="\n\n",
+                                          chunk_size=1000,
+                                          chunk_overlap=10)
+    chunked_documents = text_splitter.split_documents(all_text)
     print("txts chunked  successfully")
 
     return chunked_documents
