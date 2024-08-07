@@ -1,4 +1,4 @@
-from rag import lister
+from rag  import lister
 from preprocessing import chunking
 from langchain.vectorstores import Chroma
 import chromadb

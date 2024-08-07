@@ -6,9 +6,6 @@ pandas
 langchain_community
 pypdf
 langchain_chroma 
-
-
-
 langchain_openai
 transformers 
 sentence-transformers
