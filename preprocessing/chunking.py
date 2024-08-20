@@ -30,7 +30,6 @@ def chunking_txt(txt_files):
             txt_path = file  # Use directory_path instead of txt_list
             with open(txt_path, 'r', encoding='utf-8') as f:
                 all_text+=f.read() +"\n"
-                print(f[:100])
                 
                 """content = f.read()
                 documents.append(content)"""
