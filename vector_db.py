@@ -1,4 +1,5 @@
-from rag  import lister
+from rag  import lister 
+from rag import merging
 from preprocessing import chunking , combiner
 from langchain.vectorstores import Chroma
 import chromadb
@@ -15,7 +16,7 @@ from langchain_community.document_loaders import TextLoader
 from langchain_community.document_loaders import CSVLoader
 
 
-def load_db_chunk_persist_txt(txt_files , embeddings):
+'''def load_db_chunk_persist_txt(txt_files , embeddings):
     
     chunked_documents = chunking.chunking_txt(txt_files)
     client = chromadb.Client()
@@ -125,6 +126,11 @@ def load_db_persist_csv(csv_files, embeddings):
     print("\n vector_csv_db persisted successfully")
 
     return vector_db_csv
+'''
+
+
+
+
 
 
 
@@ -157,7 +163,7 @@ def combined_pdf_vectorstore(output_pdf):
         return docs
     def splitting(docs):
         text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size = 500,
+        chunk_size = 700,
         chunk_overlap  = 50,
         )
         docs_after_split = text_splitter.split_documents(docs)
@@ -187,7 +193,7 @@ def combined_pdf_vectorstore(output_pdf):
 def combined_txt_vectorstore(output_txt):
     def txt_loader(file_path):
             
-        loader = TextLoader(file_path)
+        loader = TextLoader(file_path , encoding = "utf-8")
 
         docs = loader.load()
 
@@ -198,7 +204,7 @@ def combined_txt_vectorstore(output_txt):
         return docs
     def splitting(docs):
         text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size = 500,
+        chunk_size = 700,
         chunk_overlap  = 50,
         )
         docs_after_split = text_splitter.split_documents(docs)
@@ -294,7 +300,7 @@ def load_and_save_Vector_stores():
     print(sys.path)
 
 
-    path = 'src\data_sample'
+    path = 'src\data'
     
     output_pdf = "src/combined_data/combined.pdf"
     output_txt = "src\combined_data\combined.txt"
@@ -369,9 +375,24 @@ if __name__ == "__main__":
     
     vectorstore_pdf , vectorstore_txt , vectorstore_csv , pdf_vectorstore_path , txt_vectorstore_path, csv_vectorstore_path =load_and_save_Vector_stores()
 
+
+    
+    '''combined_db = merging.merging_db_FAISS(pdf_db = vectorstore_pdf,
+                             txt_db = vectorstore_txt ,
+                             csv_db = vectorstore_txt)
+    
+    save_vectorstore(combined_db , save_path = "./artifacts/combined_vectorstore")
+    '''
+    
+    '''query = "tell me about dean suprava patnaik"
+    
+    vector_stores  = [vectorstore_pdf, vectorstore_csv , vectorstore_txt]
+    results = ranking.rank_across_vector_stores( query = query , vectorstores = vector_stores)
+    
+    print(results)
     
     
-    
+    '''
     
     
     

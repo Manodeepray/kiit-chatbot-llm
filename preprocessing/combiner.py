@@ -28,9 +28,9 @@ class Combiner:
         try:
             read_files = txt_files
 
-            with open(output_txt, "wb") as outfile:
+            with open(output_txt, "w" ,encoding='utf-8') as outfile:
                 for f in read_files:
-                    with open(f, "rb") as infile:   
+                    with open(f, "r" , encoding='utf-8') as infile:   
                         outfile.write(infile.read())
             print("txt files merged successfully")
             
