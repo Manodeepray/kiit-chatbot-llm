@@ -1,5 +1,4 @@
-
-from vector_db_json import *
+from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
 
 #vector_store retriever
 
@@ -10,7 +9,7 @@ def vector_store_retirever(vectorstore):
 
     
 
-
+'''
 if __name__ == "__main__":
     
     query = str(input("enter ur query : "))
@@ -36,6 +35,6 @@ if __name__ == "__main__":
     search_type="similarity_score_threshold", search_kwargs={"score_threshold": 0.5}
     )"""
 
-    '''retriever = db.as_retriever(search_type="mmr")
+    retriever = db.as_retriever(search_type="mmr")
 
     '''

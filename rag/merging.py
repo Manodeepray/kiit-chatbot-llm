@@ -1,19 +1,6 @@
 
-from langchain.retrievers import EnsembleRetriever
+from langchain.retrievers.ensemble import EnsembleRetriever
 
-from langchain.vectorstores import Chroma
-
-
-
-def merging_db_chroma(pdf_docs , txt_docs , csv_docs,embeddings):
-    chroma_directory = ""
-    
-    db = Chroma(persist_directory=chroma_directory, embedding_function=embeddings)
-
-    db.add_documents(documents=pdf_docs)
-    db.add_documents(documents=txt_docs)  
-    db.add_documents(documents=csv_docs)  
-    return db
 
 def merging_db_FAISS(pdf_db , txt_db , csv_db):
     #FAISS VECTOR DB's

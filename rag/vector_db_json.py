@@ -5,7 +5,7 @@ from embedding import *
 
 def return_db_chroma(filepath):
     
-    embedding_function =sebtence_transformer_embedding()
+    embedding_function =sentence_transformer_embedding()
 
     hf = hugging_face_embeddding()
 
@@ -21,7 +21,7 @@ def return_db_chroma(filepath):
 
 def return_db_faiss(filepath):
     
-    embedding_function =sebtence_transformer_embedding()
+    embedding_function =sentence_transformer_embedding()
 
     hf = hugging_face_embeddding()
 
