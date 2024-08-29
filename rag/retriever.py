@@ -38,3 +38,6 @@ if __name__ == "__main__":
     retriever = db.as_retriever(search_type="mmr")
 
     '''
+    
+    
+    

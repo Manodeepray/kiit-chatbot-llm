@@ -12,5 +12,5 @@ def merging_db_FAISS(pdf_db , txt_db , csv_db):
 
 
 def ensemble_retriever(pdf_retriever , csv_retriever , txt_retriever):
-    ensemble_retriever = EnsembleRetriever([pdf_retriever , csv_retriever , txt_retriever] , weights=[0.33 , 0.33 , 0.33])
+    ensemble_retriever = EnsembleRetriever(retrievers=[pdf_retriever , csv_retriever , txt_retriever] , weights=[0.33 , 0.33 , 0.33])
     return  ensemble_retriever

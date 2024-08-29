@@ -2,9 +2,10 @@ from rag import memory , retriever , prompt , llm , merging , embedding
 import faiss
 from langchain_community.vectorstores import FAISS
 from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
+from langchain.chains.history_aware_retriever import create_history_aware_retriever
 from artifacts import keys
 
-def chatbot_rag(query):
+def chatbot_rag():
     HUGGINGFACEHUB_API_TOKEN = keys.HUGGINGFACEHUB_API_TOKEN
     try:
         embeddings = embedding.hugging_face_embeddding()
@@ -89,19 +90,22 @@ def chatbot_rag(query):
         print(f"error loading the ensemble retriever : {e}")
 
         
-    try:
+    '''try:
         rag_memory = memory.ConversationBufferMemory(memory_key='chat_history' , return_messages= True)
         print("rag memory func loaded successfully")
     except Exception as e:
-        print(f"error loading rag memory func : {e}")
+        print(f"error loading rag memory func : {e}")'''
         
     try:
-        prompt_template = prompt.prompt_template_mempry()
+        prompt_template = prompt.context_q_prompt()
         print("prompt_template loaded successfully")
     except Exception as e:
         print(f"error loading prompt_template : {e}")
         
-    try:
+        
+        
+#    ConversationalRetrievalChain is depreceated 
+    '''try:
         conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=llm_model,
         retriever=ensemble_retriever,
@@ -110,25 +114,46 @@ def chatbot_rag(query):
     )
         print("conversation_chain loaded successfully")
     except Exception as e:
-        print(f"error loading conversation_chain : {e}")
+        print(f"error loading conversation_chain : {e}")'''
         
-      
+        
+        
+        
+        
+        
     try:
+        chat_retriever_chain = create_history_aware_retriever(
+        llm = llm_model, retriever=ensemble_retriever, prompt=prompt_template
+        )
+        
+        print("chat_retriever_chain loaded successfully")
+    except Exception as e:
+        print(f"error loading chat_retriever_chain : {e}")
+            
+    """response = chat_retriever_chain.invoke({"input": query})
+"""
+    '''try:
         print("generating response\n")
-        response = conversation_chain.run(question=query)
         print(f"response generated successfully \n response : {response}")
 
     except Exception as e:
-        print(f"error generating response : {e}")
+        print(f"error generating response : {e}")'''
 
        
     
 
 
-    return response
+    return chat_retriever_chain
 
 
 if __name__ == "__main__":
-    query = "What is Document testimonial about?"
-    response = chatbot_rag(query=query)
-    
+#    query = "What is Document testimonial about?"
+    chat_retriever_chain = chatbot_rag()
+    query = "empty"
+    while(query!="exit"):
+        query = input("enter your query :")
+        query = query.lower()
+        response = chat_retriever_chain.invoke({"input": query})
+
+        print(response)
+        
