@@ -118,7 +118,8 @@ def chatbot_rag():
         
         
         
-        
+    
+    
         
         
     try:
@@ -146,14 +147,34 @@ def chatbot_rag():
     return chat_retriever_chain
 
 
+
+def get_response(query):
+    chat_retriever_chain = chatbot_rag()
+    query = query.lower()
+    response = chat_retriever_chain.invoke({"input": query})
+    
+    return response
+
 if __name__ == "__main__":
+    
+
 #    query = "What is Document testimonial about?"
+      
+    
+    
+    
     chat_retriever_chain = chatbot_rag()
     query = "empty"
     while(query!="exit"):
         query = input("enter your query :")
         query = query.lower()
         response = chat_retriever_chain.invoke({"input": query})
-
+        documents = response
+        for document in documents:
+            document.page_content = document.page_content.replace('\n', ' ')
+        
         print(response)
         
+        
+        
+    

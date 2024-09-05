@@ -40,12 +40,16 @@ if prompt := st.chat_input("What do you want to know?"):
     st.session_state.messages.append({"role": "user", "output": prompt})
 
     
-    data = {"text": prompt}
+    data = prompt
 
     with st.spinner("Searching for an answer..."):
         response = get_response(query=data) 
+        documents = response
+        for document in documents:
+            document.page_content = document.page_content.replace('\n', ' ')
+        
         if response != None:
-            output_text = response
+            output_text = documents
             explanation = "not yet done"
 
         else:
