@@ -1,6 +1,4 @@
-Here's a **beautiful** `README.md` template for your **KIIT LLM project using RAG**. I've structured it with a professional and user-friendly approach, referencing common sections from popular GitHub projects.
-
----
+## \\
 
 # 📚 KIIT LLM Chatbot with RAG: Multi-File Data Query System
 
@@ -19,7 +17,7 @@ Welcome to the **KIIT LLM Chatbot**, an AI-powered system designed to retrieve a
 - **LangChain**: Framework used for managing retrieval and generation.
 - **Streamlit**: Provides the interactive frontend for users.
 - **PyPDF2**, **pandas**, **docx2txt**: Used to parse PDFs, CSVs, and DOC files.
-- **OpenAI API / Hugging Face Models**: To handle the LLM-based query generation.
+- **Gemini API / Hugging-Face Models**: To handle the LLM-based query generation.
 
 ## 🚀 Getting Started
 
@@ -35,8 +33,8 @@ Make sure you have the following installed:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/username/kiit-llm-rag-chatbot.git
-   cd kiit-llm-rag-chatbot
+   git clone https://github.com/Manodeepray/kiit-chatbot-llm.git
+   cd kiit-chatbot-llm
    ```
 
 2. **Install dependencies**:
@@ -45,7 +43,15 @@ Make sure you have the following installed:
    pip install -r requirements.txt
    ```
 
-3. **Run the application**:
+3. **Add you documents in the data folder**:
+
+4. **Create the vectorstores**:
+
+   ```bash
+   python vector_db.py
+   ```
+
+5. **Run the application**:
 
    ```bash
    streamlit run app.py
@@ -56,13 +62,15 @@ Make sure you have the following installed:
 ```
 📂 kiit-llm-rag-chatbot/
 │
-├── 📁 data/
-│   ├── example.pdf
-│   ├── example.csv
-│   └── example.docx
+├── 📁 src/
+|   |
+|   ├──📁 data/
+│       ├── example.pdf
+│       ├── example.csv
+│       └── example.txt
 │
 ├── app.py              # Main Streamlit app
-├── rag_model.py        # RAG logic and document processing
+├── main_rag.py         # RAG logic and document processing
 ├── requirements.txt    # Python package requirements
 ├── README.md           # Project documentation
 └── LICENSE
@@ -116,5 +124,3 @@ Email: [2230028@kiit.ac.in](mailto:2230028@kiit.ac.in)
 _Happy Querying!_
 
 ---
-
-This template should give your project a clean and engaging README, following typical GitHub standards while highlighting your project's key strengths!
