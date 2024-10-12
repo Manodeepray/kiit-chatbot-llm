@@ -21,3 +21,8 @@ PyMuPDF
 jq
 tf-keras
 langchain-huggingface
+langchain-google-genai==2.0.0
+google.generativeai
+langchain==0.2.9
+langchain-core==0.2.23
+langchain-community==0.2.10

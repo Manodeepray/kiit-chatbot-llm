@@ -6,47 +6,92 @@ from langchain.chains.history_aware_retriever import create_history_aware_retrie
 from artifacts import keys
 
 def chatbot_rag():
+    mode = 'GEMINI' # 'HF'
+    
     HUGGINGFACEHUB_API_TOKEN = keys.HUGGINGFACEHUB_API_TOKEN
+    GOOGLE_API_KEY = keys.GOOGLE_API_KEY
     try:
-        embeddings = embedding.hugging_face_embeddding()
+        if mode == 'GEMINI':
+            embeddings_g = embedding.gemini_embeddings()
+        elif mode == 'HF':
+            embeddings_hf = embedding.hugging_face_embeddding()
+        
         print("embedding loaded")
     except Exception as e:
         print(f"error loading the embeddings : {e}")
 
 
     try:
-        llm_model = llm.load_llm(HUGGINGFACEHUB_API_TOKEN = HUGGINGFACEHUB_API_TOKEN)
+        if mode == 'GEMINI':
+            llm_model = llm.load_llm_gemini(GOOGLE_API_KEY=GOOGLE_API_KEY)
+        elif mode == 'HF':
+            llm_model = llm.load_llm_hf(HUGGINGFACEHUB_API_TOKEN = HUGGINGFACEHUB_API_TOKEN)
+        
         print("llm loaded")
     except Exception as e:
         print(f"error loading model : {e}")
         
-
-    try:
+    #hugging face vectorstores
+    if mode == 'HF':
         try:
-            pdf_vectorstore = FAISS.load_local(folder_path="artifacts/pdf_vectorstore",embeddings = embeddings ,allow_dangerous_deserialization= True)
-            print("pdf vectorstore loaded")
+            try:
+                pdf_vectorstore = FAISS.load_local(folder_path="artifacts/pdf_vectorstore",embeddings = embeddings_hf ,allow_dangerous_deserialization= True)
+                print("pdf vectorstore loaded")
+            except Exception as e:
+                print(f"error loading pdf vectorstore :{e}")
+            
+            try:    
+                txt_vectorstore = FAISS.load_local(folder_path="artifacts/txt_vectorstore",embeddings = embeddings_hf ,allow_dangerous_deserialization= True)
+                print("txt vectorstore loaded")
+            except Exception as e:
+                print(f"error loading txt vectorstore :{e}")
+            
+            try:    
+                csv_vectorstore = FAISS.load_local(folder_path="artifacts/csv_vectorstore",embeddings = embeddings_hf ,allow_dangerous_deserialization= True)
+                print("csv vectorstore loaded")
+            except Exception as e:
+                print(f"error loading csv vectorstore :{e}")
+            
+            
+            
+            print("all vectorstores loaded successfully")
         except Exception as e:
-            print(f"error loading pdf vectorstore :{e}")
+            
+            print(f"error loading the vectorstores : {e}")
         
-        try:    
-            txt_vectorstore = FAISS.load_local(folder_path="artifacts/txt_vectorstore",embeddings = embeddings ,allow_dangerous_deserialization= True)
-            print("txt vectorstore loaded")
+    elif mode == 'GEMINI':
+    # gemini vectorstore
+        try:
+            try:
+                pdf_vectorstore = FAISS.load_local(folder_path="artifacts/pdf_vectorstore_gemini",embeddings = embeddings_g ,allow_dangerous_deserialization= True)
+                print("pdf vectorstore loaded")
+            except Exception as e:
+                print(f"error loading pdf vectorstore :{e}")
+            
+            try:    
+                txt_vectorstore = FAISS.load_local(folder_path="artifacts/txt_vectorstore_gemini",embeddings = embeddings_g ,allow_dangerous_deserialization= True)
+                print("txt vectorstore loaded")
+            except Exception as e:
+                print(f"error loading txt vectorstore :{e}")
+            
+            try:    
+                csv_vectorstore = FAISS.load_local(folder_path="artifacts/csv_vectorstore_gemini",embeddings = embeddings_g ,allow_dangerous_deserialization= True)
+                print("csv vectorstore loaded")
+            except Exception as e:
+                print(f"error loading csv vectorstore :{e}")
+            
+            
+            
+            print("all vectorstores loaded successfully")
         except Exception as e:
-            print(f"error loading txt vectorstore :{e}")
-        
-        try:    
-            csv_vectorstore = FAISS.load_local(folder_path="artifacts/csv_vectorstore",embeddings = embeddings ,allow_dangerous_deserialization= True)
-            print("csv vectorstore loaded")
-        except Exception as e:
-            print(f"error loading csv vectorstore :{e}")
+            
+            print(f"error loading the vectorstores : {e}")
         
         
         
-        print("all vectorstores loaded successfully")
-    except Exception as e:
         
-        print(f"error loading the vectorstores : {e}")
-    
+        
+    # creating retriever instances 
     
     
     
@@ -79,7 +124,7 @@ def chatbot_rag():
         
         print(f"error loading the retrievers : {e}")
         
-        
+    # merging the 3 retrievers
         
     try:
         ensemble_retriever = merging.ensemble_retriever(pdf_retriever=pdf_retriever ,
@@ -158,13 +203,14 @@ def get_response(query):
 if __name__ == "__main__":
     
 
-#    query = "What is Document testimonial about?"
+    # query = "What is Document testimonial about?"
       
     
     
     
     chat_retriever_chain = chatbot_rag()
     query = "empty"
+    
     while(query!="exit"):
         query = input("enter your query :")
         query = query.lower()
