@@ -43,7 +43,7 @@ Make sure you have the following installed:
    pip install -r requirements.txt
    ```
 
-3. **Add you documents in the data folder**:
+3. **Add your documents in the data folder**:
 
 4. **Create the vectorstores**:
 

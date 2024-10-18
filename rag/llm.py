@@ -28,7 +28,7 @@ def llm_api_request(query_text , HUGGINGFACEHUB_API_TOKEN):
 def load_llm_hf(HUGGINGFACEHUB_API_TOKEN):
     
     
-    llms = ["meta-llama/Meta-Llama-3-8B","mistralai/Mistral-7B-v0.1","google/gemma-7b"]
+    llms = ["meta-llama/Meta-Llama-3-8B","mistralai/Mistral-7B-v0.1","google/gemma-7b","google/gemma-2-27b"]
     
     
     hf = HuggingFaceHub(

@@ -6,15 +6,15 @@ from langchain.chains.history_aware_retriever import create_history_aware_retrie
 from artifacts import keys
 
 def chatbot_rag():
-    mode = 'GEMINI' # 'HF'
-    
+    #mode = 'GEMINI' 
+    mode = 'HF'
     HUGGINGFACEHUB_API_TOKEN = keys.HUGGINGFACEHUB_API_TOKEN
     GOOGLE_API_KEY = keys.GOOGLE_API_KEY
     try:
         if mode == 'GEMINI':
             embeddings_g = embedding.gemini_embeddings()
         elif mode == 'HF':
-            embeddings_hf = embedding.hugging_face_embeddding()
+            embeddings_hf = embedding.hugging_face_embedding()
         
         print("embedding loaded")
     except Exception as e:
@@ -141,6 +141,8 @@ def chatbot_rag():
     except Exception as e:
         print(f"error loading rag memory func : {e}")'''
         
+        
+    
     try:
         prompt_template = prompt.context_q_prompt()
         print("prompt_template loaded successfully")
@@ -168,6 +170,7 @@ def chatbot_rag():
         
         
     try:
+        
         chat_retriever_chain = create_history_aware_retriever(
         llm = llm_model, retriever=ensemble_retriever, prompt=prompt_template
         )
@@ -200,6 +203,18 @@ def get_response(query):
     
     return response
 
+def llm_answer(query , context):
+    llm_model = llm.load_llm_hf(HUGGINGFACEHUB_API_TOKEN=keys.HUGGINGFACEHUB_API_TOKEN)
+    prompt = f'''"You are an intelligent assistant capable of answering complex questions using a combination of document retrieval and reasoning. The context provided contains important information extracted from documents, and your task is to use this context to generate a clear, accurate response to the user query.
+
+Context: {context}
+
+User Query: {query}
+
+Based on the context, provide the most relevant and detailed answer to the user query. If the context doesn't have enough information, suggest the next steps or additional information that might be useful."'''
+    response = llm_model.invoke(prompt)
+    return response
+
 if __name__ == "__main__":
     
 
@@ -215,11 +230,20 @@ if __name__ == "__main__":
         query = input("enter your query :")
         query = query.lower()
         response = chat_retriever_chain.invoke({"input": query})
+        print('response :',response)
         documents = response
+        response = {}
+        answer = []
         for document in documents:
-            document.page_content = document.page_content.replace('\n', ' ')
+            content = document.page_content.replace('\n', ' ')
+            content = content.replace('\t',' ')
+            answer.append(content)
+        answer = answer[:5]
+        print(f"answer : \n {answer}\n answer_len :{len(answer)}")
+        llm_response  = llm_answer(query=query , context= answer)
+        print("llm_response",llm_response)
         
-        print(response)
+        
         
         
         
