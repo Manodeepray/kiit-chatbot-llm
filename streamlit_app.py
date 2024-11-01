@@ -6,7 +6,7 @@ import requests
 import streamlit as st
 from main_rag import get_response
 URL = os.getenv("chat_bot_url" , "http://localhost:8000/college-rag-agent")
-from main_rag import gemini_response
+from main_rag import gemini_response , chatbot_rag
     
 st.title("KIIT SOEE Chatbot")
 st.info(
@@ -30,7 +30,7 @@ for message in st.session_state.messages:
 
 
 
-
+chat_retriever_chain = chatbot_rag()
 
 
 
@@ -43,7 +43,7 @@ if prompt := st.chat_input("What do you want to know?"):
     data = prompt
 
     with st.spinner("Searching for an answer..."):
-        response = gemini_response(query = data)
+        response = gemini_response(chat_retriever_chain=chat_retriever_chain,query = data)
         #response = get_response(query=data) 
         documents = response.text
         

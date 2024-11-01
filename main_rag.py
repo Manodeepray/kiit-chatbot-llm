@@ -220,7 +220,7 @@ Based on the context, provide the most relevant and detailed answer to the user 
     return response
 
 
-def gemini_response(query):
+def gemini_response(chat_retriever_chain,query):
     query = query.lower()
     response = chat_retriever_chain.invoke({"input": query})
     print('response :',response)
@@ -260,9 +260,9 @@ if __name__ == "__main__":
     query = "empty"
     
     while(query!="exit"):
-        
-        
-        response = gemini_response(query)
+        query = input("enter your query :")
+        query = query.lower()
+        response = gemini_response(chat_retriever_chain , query)
         
         
         
