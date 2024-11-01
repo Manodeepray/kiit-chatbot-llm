@@ -4,6 +4,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
 from langchain.chains.history_aware_retriever import create_history_aware_retriever
 from artifacts import keys
+import google.generativeai as genai
 
 def chatbot_rag():
     #mode = 'GEMINI' 
@@ -212,8 +213,40 @@ Context: {context}
 User Query: {query}
 
 Based on the context, provide the most relevant and detailed answer to the user query. If the context doesn't have enough information, suggest the next steps or additional information that might be useful."'''
+    
+    print(prompt)
+    
     response = llm_model.invoke(prompt)
     return response
+
+
+def gemini_response(query):
+    query = query.lower()
+    response = chat_retriever_chain.invoke({"input": query})
+    print('response :',response)
+    documents = response
+    response = {}
+    answer = []
+    for document in documents:
+        content = document.page_content.replace('\n', ' ')
+        content = content.replace('\t',' ')
+        answer.append(content)
+    answer = answer[:5]
+        
+        
+    template=f"Based on the following context:\n{answer}\nAnswer the question:\n{query}"
+    #print(f"answer : \n {answer}\n answer_len :{len(answer)}")
+    #llm_response  = llm_answer(query=query , context= answer)
+    print("template : ",template)
+    genai.configure(api_key = "AIzaSyBKsyvw-c3WFy9tWncfiWIPTC1-e_5XPiQ")
+
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    llm_response = model.generate_content(template)
+        
+    print("llm_response",llm_response.text)
+    
+    
+    return llm_response
 
 if __name__ == "__main__":
     
@@ -227,21 +260,9 @@ if __name__ == "__main__":
     query = "empty"
     
     while(query!="exit"):
-        query = input("enter your query :")
-        query = query.lower()
-        response = chat_retriever_chain.invoke({"input": query})
-        print('response :',response)
-        documents = response
-        response = {}
-        answer = []
-        for document in documents:
-            content = document.page_content.replace('\n', ' ')
-            content = content.replace('\t',' ')
-            answer.append(content)
-        answer = answer[:5]
-        print(f"answer : \n {answer}\n answer_len :{len(answer)}")
-        llm_response  = llm_answer(query=query , context= answer)
-        print("llm_response",llm_response)
+        
+        
+        response = gemini_response(query)
         
         
         
