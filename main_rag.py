@@ -1,4 +1,4 @@
-from rag import memory , retriever , prompt , llm , merging , embedding
+from rag import llm_utils, memory , retriever , prompt , merging , embedding
 import faiss
 from langchain_community.vectorstores import FAISS
 from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
@@ -24,9 +24,9 @@ def chatbot_rag():
 
     try:
         if mode == 'GEMINI':
-            llm_model = llm.load_llm_gemini(GOOGLE_API_KEY=GOOGLE_API_KEY)
+            llm_model = llm_utils.load_llm_gemini(GOOGLE_API_KEY=GOOGLE_API_KEY)
         elif mode == 'HF':
-            llm_model = llm.load_llm_hf(HUGGINGFACEHUB_API_TOKEN = HUGGINGFACEHUB_API_TOKEN)
+            llm_model = llm_utils.load_llm_hf(HUGGINGFACEHUB_API_TOKEN = HUGGINGFACEHUB_API_TOKEN)
         
         print("llm loaded")
     except Exception as e:
@@ -205,7 +205,7 @@ def get_response(query):
     return response
 
 def llm_answer(query , context):
-    llm_model = llm.load_llm_hf(HUGGINGFACEHUB_API_TOKEN=keys.HUGGINGFACEHUB_API_TOKEN)
+    llm_model = llm_utils.load_llm_hf(HUGGINGFACEHUB_API_TOKEN=keys.HUGGINGFACEHUB_API_TOKEN)
     prompt = f'''"You are an intelligent assistant capable of answering complex questions using a combination of document retrieval and reasoning. The context provided contains important information extracted from documents, and your task is to use this context to generate a clear, accurate response to the user query.
 
 Context: {context}
@@ -248,6 +248,51 @@ def gemini_response(chat_retriever_chain,query):
     
     return llm_response
 
+
+def ollama_response(chat_retriever_chain,query):
+    
+    #setting the llm 
+    llm_id = "llama3.2:3b"
+    
+    
+    
+    
+    query = query.lower()
+    response = chat_retriever_chain.invoke({"input": query})
+    print('response :',response)
+    documents = response
+    response = {}
+    answer = []
+    for document in documents:
+        content = document.page_content.replace('\n', ' ')
+        content = content.replace('\t',' ')
+        answer.append(content)
+    context = answer[:5]
+        
+        
+    template=f'''you are a chat bot helping students and parents for getting information about the college Based on the context and question given below.
+    try to complete each answer and be friendly as if you are a student guide.
+    keep the answers brief unless told to give large answers 
+    documents = response
+    
+    context:\n  {context} \n               
+    
+    question:\n{query}'''
+    #print(f"answer : \n {answer}\n answer_len :{len(answer)}")
+    #llm_response  = llm_answer(query=query , context= answer)
+    print("template : ",template)
+    
+    #loadind llama model
+    
+    llm = llm_utils.load_llm_ollama(llm_id=llm_id)
+
+    llm_response = llm.invoke(template)
+    
+    print("\n \n llm_response :",llm_response)
+    
+    
+    return llm_response
+
 if __name__ == "__main__":
     
 
@@ -262,8 +307,8 @@ if __name__ == "__main__":
     while(query!="exit"):
         query = input("enter your query :")
         query = query.lower()
-        response = gemini_response(chat_retriever_chain , query)
-        
+        #response = gemini_response(chat_retriever_chain , query)
+        response = ollama_response(chat_retriever_chain , query)
         
         
         

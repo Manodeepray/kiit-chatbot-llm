@@ -3,6 +3,9 @@ from langchain_community.llms.huggingface_hub import HuggingFaceHub
 from artifacts import keys
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
+from langchain_ollama import OllamaLLM
+
+
 
 HUGGINGFACEHUB_API_TOKEN = keys.HUGGINGFACEHUB_API_TOKEN
 GOOGLE_API_KEY = keys.GOOGLE_API_KEY
@@ -57,5 +60,17 @@ def load_llm_gemini(GOOGLE_API_KEY):
 	return llm
     
 
+def load_llm_ollama(llm_id):
+    #  llm_id = llama3.2:3b
+    llm = OllamaLLM(model= llm_id)
+    
+    return llm
+
+
+
+if __name__ == "__main__":
+    llm = load_llm_ollama("llama3.2:3b")
+    response = llm.invoke("The first man on the moon was ...")
+    print(response)
 
 
