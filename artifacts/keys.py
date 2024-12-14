@@ -1,3 +1,3 @@
-GOOGLE_API_KEY = "AIzaSyDy-ItA_7l02JNEC3YVXWsoqrGs6nBEufY"  # add your GOOGLE API key here
+GOOGLE_API_KEY = "AIzaSyAQKESf1NzOewpZ8InR9emIxMyG8VF9bzs"  # add your GOOGLE API key here
 
 HUGGINGFACEHUB_API_TOKEN = "ZIwlTKALbcOBHxuhrxcyaFcQmQoTDCWXJM_fh"

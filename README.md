@@ -1,5 +1,3 @@
-## \\
-
 # 📚 KIIT LLM Chatbot with RAG: Multi-File Data Query System
 
 Welcome to the **KIIT LLM Chatbot**, an AI-powered system designed to retrieve and generate relevant information from **PDFs, CSVs, and DOCs** using **Retrieval-Augmented Generation (RAG)**. This project leverages the power of **Streamlit** for the UI, providing an interactive experience for users to query documents with ease.
@@ -10,14 +8,18 @@ Welcome to the **KIIT LLM Chatbot**, an AI-powered system designed to retrieve a
 - **Advanced RAG Model**: Combines **retrieval** and **generation** techniques for highly relevant and accurate answers.
 - **Streamlit Interface**: Simple, user-friendly UI for easy interaction with the system.
 - **Scalable Design**: Built to handle a wide variety of document types and queries.
+- **Customizable LLM Options**: Users can choose between **Gemini 1.5 Flash**, **Hugging Face models (via serverless inference endpoint)**, or **Ollama on-device models**.
+- **Ensemble Retriever**: Combines **PDF**, **CSV**, and **TXT** retrievers using LangChain's **EnsembleRetriever** with equal weights (0.33 each).
+- **History-Aware Retrieval**: Implements LangChain's **create_history_aware_retriever** for context-aware querying.
 
 ## 🛠️ Technologies Used
 
 - **Python**: Core language for the system.
 - **LangChain**: Framework used for managing retrieval and generation.
 - **Streamlit**: Provides the interactive frontend for users.
+- **FAISS**: Vector store for efficient document retrieval.
+- **Gemini API / Hugging Face Models**: To handle the LLM-based query generation.
 - **PyPDF2**, **pandas**, **docx2txt**: Used to parse PDFs, CSVs, and DOC files.
-- **Gemini API / Hugging-Face Models**: To handle the LLM-based query generation.
 
 ## 🚀 Getting Started
 
@@ -78,26 +80,29 @@ Make sure you have the following installed:
 
 ## ⚙️ How It Works
 
-1. **Upload Documents**: Users can upload PDFs, CSVs, and DOC files to the interface.
+1. **Upload Documents**: Users can upload PDFs, CSVs, and TXT files to the interface.
 2. **Query the System**: After the files are processed, users can input their queries.
-3. **Response Generation**: The RAG system retrieves relevant information from the documents and generates a coherent, human-like response.
-4. **Display Answers**: Answers are displayed interactively within the Streamlit app.
+3. **Retrieval & Generation**:
+   - The system uses an **Ensemble Retriever** to fetch information from PDFs, CSVs, and TXT files.
+   - Retrieval incorporates **history awareness** for more contextually relevant results.
+4. **Response Generation**: The RAG system retrieves relevant information and generates a coherent, human-like response using the selected LLM.
+5. **Display Answers**: Answers are displayed interactively within the Streamlit app.
 
 ## 📝 Example Query
 
 Once the system is running, upload your documents and enter a query such as:
 
 ```
-"What are the key highlights from the meeting notes in the uploaded DOC file?"
+"What are the key highlights from the meeting notes in the uploaded TXT file?"
 ```
 
-The system will return a detailed response based on the contents of the DOC file.
+The system will return a detailed response based on the contents of the uploaded TXT file.
 
 ## 📈 Future Improvements
 
 - **Multi-Language Support**: Expand capabilities to support document querying in multiple languages.
 - **Real-Time Document Updating**: Allow dynamic updates when documents are added or modified.
-- **Improved Performance**: Further optimize RAG pipeline for faster responses.
+- **Improved Performance**: Further optimize the RAG pipeline for faster responses.
 
 ## 📜 License
 

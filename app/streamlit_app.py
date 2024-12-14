@@ -5,7 +5,6 @@ import os
 import requests
 import streamlit as st
 from main_rag import get_response
-URL = os.getenv("chat_bot_url" , "http://localhost:8000/college-rag-agent")
 
     
 st.title("KIIT SOEE Chatbot")
