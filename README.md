@@ -122,7 +122,7 @@ Contributions are welcome! To get started:
 
 For any inquiries or questions, feel free to reach out at:  
 **Manodeep Ray**  
-Email: [2230028@kiit.ac.in](mailto:2230028@kiit.ac.in)
+Email: [Manodeep](mailto:manodeepray1@gmail.com)
 
 ---
 
