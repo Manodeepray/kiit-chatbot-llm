@@ -6,7 +6,7 @@ import vector_db
 import asyncio
 
 # Chatbot UI
-st.title("Streamlit Chatbot")
+st.title("Chatbot for KIIT SOEE")
 
 # Initialize session state for conversation history
 if "messages" not in st.session_state:

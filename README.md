@@ -8,7 +8,7 @@ Welcome to the **KIIT LLM Chatbot**, an AI-powered system designed to retrieve a
 - **Advanced RAG Model**: Combines **retrieval** and **generation** techniques for highly relevant and accurate answers.
 - **Streamlit Interface**: Simple, user-friendly UI for easy interaction with the system.
 - **Scalable Design**: Built to handle a wide variety of document types and queries.
-- **Customizable LLM Options**: Users can choose between **Gemini 1.5 Flash**, **Hugging Face models (via serverless inference endpoint)**, or **Ollama on-device models**.
+- **Customizable LLM Options**: Users can choose between **Gemini 1.5 Flash**, **Hugging Face models (via serverless inference endpoint)**, or **Ollama on-device models** (currently using Deepseek-R1-1.5b).
 - **Ensemble Retriever**: Combines **PDF**, **CSV**, and **TXT** retrievers using LangChain's **EnsembleRetriever** with equal weights (0.33 each).
 - **History-Aware Retrieval**: Implements LangChain's **create_history_aware_retriever** for context-aware querying.
 
@@ -103,6 +103,11 @@ The system will return a detailed response based on the contents of the uploaded
 - **Multi-Language Support**: Expand capabilities to support document querying in multiple languages.
 - **Real-Time Document Updating**: Allow dynamic updates when documents are added or modified.
 - **Improved Performance**: Further optimize the RAG pipeline for faster responses.
+- **Implement Advance RAG Techniques**: Add MM-RAG and Cached-Augmented generation to the pipeline.
+
+Here is an awesome image of my project:
+
+![Project Image](./imgs/image.png)
 
 ## 📜 License
 
