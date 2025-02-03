@@ -6,17 +6,22 @@ from langchain.chains.history_aware_retriever import create_history_aware_retrie
 from artifacts import keys
 import google.generativeai as genai
 
-def chatbot_rag():
+def chatbot_rag(mode):
     #mode = 'GEMINI' 
-    mode = 'HF'
+    # mode = 'HF'
     HUGGINGFACEHUB_API_TOKEN = keys.HUGGINGFACEHUB_API_TOKEN
     GOOGLE_API_KEY = keys.GOOGLE_API_KEY
+    LLM_ID = "deepseek-r1:1.5b"
+    
+    
+    
     try:
         if mode == 'GEMINI':
             embeddings_g = embedding.gemini_embeddings()
         elif mode == 'HF':
             embeddings_hf = embedding.hugging_face_embedding()
-        
+        elif mode == 'OLLAMA':
+            embeddings_hf = embedding.hugging_face_embedding()
         print("embedding loaded")
     except Exception as e:
         print(f"error loading the embeddings : {e}")
@@ -27,7 +32,9 @@ def chatbot_rag():
             llm_model = llm_utils.load_llm_gemini(GOOGLE_API_KEY=GOOGLE_API_KEY)
         elif mode == 'HF':
             llm_model = llm_utils.load_llm_hf(HUGGINGFACEHUB_API_TOKEN = HUGGINGFACEHUB_API_TOKEN)
-        
+        elif mode == "OLLAMA":
+            
+            llm_model = llm_utils.load_llm_ollama(LLM_ID)
         print("llm loaded")
     except Exception as e:
         print(f"error loading model : {e}")
@@ -59,7 +66,34 @@ def chatbot_rag():
         except Exception as e:
             
             print(f"error loading the vectorstores : {e}")
-        
+    elif mode == 'OLLAMA':
+        try:
+            try:
+                pdf_vectorstore = FAISS.load_local(folder_path="artifacts/pdf_vectorstore",embeddings = embeddings_hf ,allow_dangerous_deserialization= True)
+                print("pdf vectorstore loaded")
+            except Exception as e:
+                print(f"error loading pdf vectorstore :{e}")
+            
+            try:    
+                txt_vectorstore = FAISS.load_local(folder_path="artifacts/txt_vectorstore",embeddings = embeddings_hf ,allow_dangerous_deserialization= True)
+                print("txt vectorstore loaded")
+            except Exception as e:
+                print(f"error loading txt vectorstore :{e}")
+            
+            try:    
+                csv_vectorstore = FAISS.load_local(folder_path="artifacts/csv_vectorstore",embeddings = embeddings_hf ,allow_dangerous_deserialization= True)
+                print("csv vectorstore loaded")
+            except Exception as e:
+                print(f"error loading csv vectorstore :{e}")
+            
+            
+            
+            print("all vectorstores loaded successfully")
+        except Exception as e:
+            
+            print(f"error loading the vectorstores : {e}")
+            
+            
     elif mode == 'GEMINI':
     # gemini vectorstore
         try:
@@ -197,7 +231,7 @@ def chatbot_rag():
 
 
 
-def get_response(query):
+def hf_response(chat_retriever_chain,query):
     chat_retriever_chain = chatbot_rag()
     query = query.lower()
     response = chat_retriever_chain.invoke({"input": query})
@@ -252,7 +286,7 @@ def gemini_response(chat_retriever_chain,query):
 def ollama_response(chat_retriever_chain,query):
     
     #setting the llm 
-    llm_id = "llama3.2:3b"
+    llm_id = "deepseek-r1:1.5b"
     
     
     

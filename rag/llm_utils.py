@@ -35,7 +35,7 @@ def load_llm_hf(HUGGINGFACEHUB_API_TOKEN):
     
     
     hf = HuggingFaceHub(
-    repo_id=llms[1],
+    repo_id=llms[0],
     model_kwargs={"temperature": 0.1, "max_length": 500},
     huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN
     )
