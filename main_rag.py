@@ -11,7 +11,7 @@ def chatbot_rag(mode):
     # mode = 'HF'
     HUGGINGFACEHUB_API_TOKEN = keys.HUGGINGFACEHUB_API_TOKEN
     GOOGLE_API_KEY = keys.GOOGLE_API_KEY
-    LLM_ID = "deepseek-r1:1.5b"
+    LLM_ID = "llama3.2:3b"#"deepseek-r1:1.5b"
     
     
     
